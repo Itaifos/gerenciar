@@ -1,9 +1,9 @@
 {
     "private": true,
     "type": "module",
-    "name": "mystockmaster",
+    "name": "gerenciar",
     "version": "0.0.1",
-    "description": "mystockmaster",
+    "description": "Gerenciar - Sistema de Gestão de Estoque",
     "author": "zakarialabib",
     "license": "Apache-2.0",
     "scripts": {

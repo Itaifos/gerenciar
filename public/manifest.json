@@ -1,6 +1,6 @@
 {
-    "name": "MystockMaster",
-    "short_name": "MystockMaster",
+    "name": "Gerenciar",
+    "short_name": "Gerenciar",
     "id": "/?source=pwa",
     "start_url": "http://127.0.0.1:8000/",
     "background_color": "#3367D6",
