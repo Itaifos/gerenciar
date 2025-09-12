@@ -1,0 +1,3 @@
+<svg <?php echo e($attributes); ?> viewBox="0 0 24 24" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+</svg><?php /**PATH F:\gerenciar-app\Gerenciar\resources\views/components/icons/menu-fold-left.blade.php ENDPATH**/ ?>

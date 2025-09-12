@@ -113,7 +113,7 @@ class HomeController extends Controller
 
         $sale_payments = SalePayment::where('date', '>=', $date_range)
             ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
+                DB::raw("strftime('%m-%Y', date) as month"),
                 DB::raw('SUM(amount) as amount'),
             ])
             ->groupBy('month')->orderBy('month')
@@ -121,7 +121,7 @@ class HomeController extends Controller
 
         $sale_return_payments = SaleReturnPayment::where('date', '>=', $date_range)
             ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
+                DB::raw("strftime('%m-%Y', date) as month"),
                 DB::raw('SUM(amount) as amount'),
             ])
             ->groupBy('month')->orderBy('month')
@@ -129,7 +129,7 @@ class HomeController extends Controller
 
         $purchase_payments = PurchasePayment::where('date', '>=', $date_range)
             ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
+                DB::raw("strftime('%m-%Y', date) as month"),
                 DB::raw('SUM(amount) as amount'),
             ])
             ->groupBy('month')->orderBy('month')
@@ -137,7 +137,7 @@ class HomeController extends Controller
 
         $purchase_return_payments = PurchaseReturnPayment::where('date', '>=', $date_range)
             ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
+                DB::raw("strftime('%m-%Y', date) as month"),
                 DB::raw('SUM(amount) as amount'),
             ])
             ->groupBy('month')->orderBy('month')
@@ -145,7 +145,7 @@ class HomeController extends Controller
 
         $expenses = Expense::where('date', '>=', $date_range)
             ->select([
-                DB::raw("DATE_FORMAT(date, '%m-%Y') as month"),
+                DB::raw("strftime('%m-%Y', date) as month"),
                 DB::raw('SUM(amount) as amount'),
             ])
             ->groupBy('month')->orderBy('month')
@@ -190,10 +190,10 @@ class HomeController extends Controller
 
         $sales = Sale::whereStatus(SaleStatus::COMPLETED)
             ->where('date', '>=', $date_range)
-            ->groupBy(DB::raw("DATE_FORMAT(date,'%d-%m-%y')"))
+            ->groupBy(DB::raw("strftime('%d-%m-%y', date)"))
             ->orderBy('date')
             ->get([
-                DB::raw(DB::raw("DATE_FORMAT(date,'%d-%m-%y') as date")),
+                DB::raw("strftime('%d-%m-%y', date) as date"),
                 DB::raw('SUM(total_amount) AS count'),
             ])
             ->pluck('count', 'date');
@@ -224,10 +224,10 @@ class HomeController extends Controller
 
         $purchases = Purchase::whereStatus(PurchaseStatus::COMPLETED)
             ->where('date', '>=', $date_range)
-            ->groupBy(DB::raw("DATE_FORMAT(date,'%d-%m-%y')"))
+            ->groupBy(DB::raw("strftime('%d-%m-%y', date)"))
             ->orderBy('date')
             ->get([
-                DB::raw(DB::raw("DATE_FORMAT(date,'%d-%m-%y') as date")),
+                DB::raw("strftime('%d-%m-%y', date) as date"),
                 DB::raw('SUM(total_amount) AS count'),
             ])
             ->pluck('count', 'date');

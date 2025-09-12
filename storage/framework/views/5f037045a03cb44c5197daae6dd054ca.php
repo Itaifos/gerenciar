@@ -1,0 +1,2 @@
+<img src="<?php echo e(asset('images/logo.png')); ?>" alt="Site Logo" <?php echo e($attributes->merge(['class' => 'w-auto h-30'])); ?>>
+<?php /**PATH F:\gerenciar-app\Gerenciar\resources\views/components/application-logo.blade.php ENDPATH**/ ?>

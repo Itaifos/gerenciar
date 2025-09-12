@@ -215,14 +215,14 @@ class Product extends Model
         return $this->price;
     }
 
-    public function attributes()
+    public function productAttributes()
     {
         return $this->belongsToMany(ProductAttribute::class)->withPivot('value');
     }
 
     public function getAttribute($key)
     {
-        $attribute = $this->attributes()->where('name', $key)->first();
+        $attribute = $this->productAttributes()->where('name', $key)->first();
         return $attribute ? $attribute->pivot->value : parent::getAttribute($key);
     }
 }
